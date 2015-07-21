@@ -33,3 +33,48 @@ A :
 a. : gcd(314315, 14142) = 1
 
 b. : 14142倍
+
+1.1.7:
+设 g 为 gcd(m, n). m = g * i, n = g * j, 且i , j 互质.
+则 m%n = g * k, 其中 k 与 j 互质.
+故 gcd(n, m%n) = g.
+
+1.1.8：
+最多发生一次. 因为之后每次循环m<-n， n<-m%n. 而m%n < n.
+
+1.1.9:
+a:
+最少除一次，如gcd(1,1) = gcd(1,0)=1
+b:
+最多除5次.gcd(5,8)=gcd(8,5)=gcd（5，3)=gcd(3,2)=gcd(2,1)=gcd(1,0)=1
+def gcd(m, n):
+    counter = 0
+    while n != 0:
+        r = m%n
+        m = n
+        n = r
+        counter += 1
+    return m, counter
+	
+result = []	
+for i in range(1, 11):
+    for j in range(1, 11):
+        m, c = gcd(i,j)
+        result.append(c)
+        print("i: %d\tj: %d\tm: %d\tcounter: %d\n"%(i, j, m, c))
+print(max(result))
+
+
+1.1.10:
+EclidOrigGCD(m, n):
+while n != 0:
+    r <- m
+    while r >= n:
+        r = r - n
+    m <- n
+    n <- r
+return m
+
+1.1.11：
+
+	
