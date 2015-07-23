@@ -1,4 +1,6 @@
 ﻿第一章
+1.1
+
 1.1.4
 Q : 设计一个计算floor(sqrt(n))的算法，n为任意正整数。除了赋值与比较运算，该算法只能用到基本的四则运算操作。
 A : 
@@ -66,6 +68,7 @@ print(max(result))
 
 
 1.1.10:
+a.
 EclidOrigGCD(m, n):
 while n != 0:
     r <- m
@@ -75,6 +78,56 @@ while n != 0:
     n <- r
 return m
 
-1.1.11：
+b:
+5， 6 -> 1 -> 4 -> 2 -> 3 -> end
+4, 6 -> 2 -> end
+8, 10 -> 2 -> 6 -> 4 -> end
+可以写出的数字个数是
+(min(m,n))/gcd(m,n) - 1
 
-	
+1.1.11:
+a:
+def extendedEuclid(m, n):
+    lst_m = [1, 0]
+    lst_n = [0, 1]
+    while n != 0:
+        q, r = divmod(m, n)
+        m = n
+        n = r
+        lst_m.append(lst_m[-2] - (q * lst_m[-1]))
+        lst_n.append(lst_n[-2] - (q * lst_n[-1]))
+    return m, lst_m[-2], lst_n[-2]
+
+b:
+设d为a, b的最大公约数。
+若c%d != 0, 方程无整数解。
+若c = d * k, 则求出方程 ap + bq = d的解，x = p*k, y=q*k
+
+1.1.12
+对第k号门。对k分解质因式， 设结果为
+a1^p1*a2^p2...
+则最终门的状态取决于
+(p1+1)*(p2+2)的奇偶性。
+
+
+1.2
+1.2.1
+Peasant Wolf Goat Cabbage |..River..|
+Wolf Cabbage |..River..| Peasant Goat
+Peasant Wolf Cabbage |..River..| Goat
+Cabbage |..River..| Peasant Wolf Goat
+Peasant Goat Cabbage |..River..| Wolf
+Goat |..River..| Peasant Cabbage Wolf
+Peasant Goat |..River..| Cabbage Wolf
+|..River..| Peasant Goat Cabbage Wolf
+
+1.2.2
+P1 P2 P3 P4 |..Bridge..|
+P3 P4 |..Bridge..| P1 P2    .... 2 min
+P1 P3 P4 |..Bridge..| P2    .... 1 min
+P1 |..Bridge..| P2 P3 P4    .... 10 min
+P1 P2 |..Bridge..| P3 P4    .... 2 min
+|..Bridge..| P1 P2 P3 P4    .... 2 min
+
+1.2.3
+
